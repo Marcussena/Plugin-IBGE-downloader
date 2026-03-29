@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DataDownloaderDialogBase</class>
+ <widget class="QDialog" name="DataDownloaderDialogBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>520</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>IBGE Downloader</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+
+   <!-- Servidor -->
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>URL do servidor IBGE:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_server">
+     <item>
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="placeholderText">
+        <string>ex: https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnNavegar">
+       <property name="text">
+        <string>Navegar</string>
+       </property>
+       <property name="maximumWidth">
+        <number>80</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- Breadcrumb -->
+   <item>
+    <widget class="QLabel" name="labelCaminho">
+     <property name="text">
+      <string>Caminho atual: —</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+
+   <!-- Listagem -->
+   <item>
+    <widget class="QListWidget" name="listWidget">
+     <property name="minimumHeight">
+      <number>220</number>
+     </property>
+    </widget>
+   </item>
+
+   <!-- Botões de navegação -->
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_nav">
+     <item>
+      <widget class="QPushButton" name="btnVoltar">
+       <property name="text">
+        <string>← Voltar</string>
+       </property>
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelSelecionado">
+       <property name="text">
+        <string>Nenhum arquivo selecionado.</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- Destino -->
+   <item>
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Pasta de destino:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QgsFileWidget" name="mQgsFileWidget">
+     <property name="storageMode">
+      <enum>QgsFileWidget::GetDirectory</enum>
+     </property>
+    </widget>
+   </item>
+
+   <!-- Baixar -->
+   <item>
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>Baixar e Carregar</string>
+     </property>
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+
+   <!-- Log -->
+   <item>
+    <widget class="QTextEdit" name="textEdit">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="maximumHeight">
+      <number>120</number>
+     </property>
+    </widget>
+   </item>
+
+   <!-- Fechar -->
+   <item>
+    <widget class="QDialogButtonBox" name="button_box">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFileWidget</class>
+   <extends>QWidget</extends>
+   <header>qgsfilewidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>button_box</sender>
+   <signal>rejected()</signal>
+   <receiver>DataDownloaderDialogBase</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel"><x>20</x><y>20</y></hint>
+    <hint type="destinationlabel"><x>20</x><y>20</y></hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
